@@ -24,13 +24,15 @@ func New(config *config.Config) *App {
 	if err != nil {
 		util.FailOnError(err, "failed to connect")
 	}
-	fiberApp := fiber.New()
+	fiberApp := fiber.New(fiber.Config{
+		ErrorHandler: util.DefaultErrorHandler,
+	})
 	app := &App{
 		fiberApp: fiberApp,
 		db:       dbInstance,
 		config:   config,
 	}
-	app.loadRoutes()
+	app.SetupRoutes()
 	return app
 }
 

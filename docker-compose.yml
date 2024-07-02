@@ -1,0 +1,17 @@
+services:
+  db:
+    container_name: finance_db
+    image: postgres:14
+    ports:
+      - 5433:5432
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWD}
+      - POSTGRES_DB=finance_db
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1k"
+        max-file: "3"

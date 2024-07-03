@@ -8,8 +8,9 @@ import (
 )
 
 type Config struct {
-	Port  int64  `mapstructure:"PORT"`
-	DbURL string `mapstructure:"POSTGRES_URL"`
+	Port                 int64  `mapstructure:"PORT"`
+	DbURL                string `mapstructure:"POSTGRES_URL"`
+	DefaultAdminPassword string `mapstructure:"DEFAULT_ADMIN_PASSWORD"`
 }
 
 var AppConfig *Config
@@ -20,7 +21,7 @@ func init() {
 	v.SetConfigName(".env")
 	v.SetConfigType("env")
 	v.AutomaticEnv()
-	util.FailOnError(v.BindEnv("PORT", "POSTGRES_URL"), "failed to bind PORT, POSTGRES_URL")
+	util.FailOnError(v.BindEnv("PORT", "POSTGRES_URL", "DEFAULT_ADMIN_PASSWORD"), "failed to bind PORT, POSTGRES_URL, DEFAULT_ADMIN_PASSWORD")
 	err := v.ReadInConfig()
 	if err != nil {
 		log.Println("Load from environment variable")

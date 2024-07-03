@@ -1,0 +1,12 @@
+CREATE TABLE IF NOT EXISTS users(
+  id TEXT NOT NULL PRIMARY KEY DEFAULT nanoid(),
+  created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMP,
+  username TEXT NOT NULL UNIQUE,
+  password TEXT NOT NULL
+);
+
+CREATE OR REPLACE TRIGGER users_updated_at
+  BEFORE UPDATE ON users
+  FOR EACH ROW
+  EXECUTE PROCEDURE moddatetime (updated_at);

@@ -10,6 +10,7 @@ services:
       - POSTGRES_DB=finance_db
     volumes:
       - ./data:/var/lib/postgresql/data
+      - ./sql:/docker-entrypoint-initdb.d/
     logging:
       driver: "json-file"
       options:

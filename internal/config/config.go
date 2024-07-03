@@ -11,6 +11,7 @@ type Config struct {
 	Port                 int64  `mapstructure:"PORT"`
 	DbURL                string `mapstructure:"POSTGRES_URL"`
 	DefaultAdminPassword string `mapstructure:"DEFAULT_ADMIN_PASSWORD"`
+	JWTSignSecret        string `mapstructure:"JWT_SIGN_SECRET"`
 }
 
 var AppConfig *Config
@@ -21,7 +22,7 @@ func init() {
 	v.SetConfigName(".env")
 	v.SetConfigType("env")
 	v.AutomaticEnv()
-	util.FailOnError(v.BindEnv("PORT", "POSTGRES_URL", "DEFAULT_ADMIN_PASSWORD"), "failed to bind PORT, POSTGRES_URL, DEFAULT_ADMIN_PASSWORD")
+	util.FailOnError(v.BindEnv("PORT", "POSTGRES_URL", "DEFAULT_ADMIN_PASSWORD", "JWT_SIGN_SECRET"), "failed to bind PORT, POSTGRES_URL, DEFAULT_ADMIN_PASSWORD, JWT_SIGN_SECRET")
 	err := v.ReadInConfig()
 	if err != nil {
 		log.Println("Load from environment variable")

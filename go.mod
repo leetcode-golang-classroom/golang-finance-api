@@ -2,9 +2,14 @@ module github.com/leetcode-golang-classroom/golang-finance-api
 
 go 1.22.4
 
-require github.com/gofiber/fiber/v2 v2.52.5
+require (
+	github.com/gofiber/contrib/jwt v1.0.9
+	github.com/gofiber/fiber/v2 v2.52.5
+	github.com/golang-jwt/jwt/v5 v5.2.1
+)
 
 require (
+	github.com/MicahParks/keyfunc/v2 v2.1.0 // indirect
 	github.com/fsnotify/fsnotify v1.7.0 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/magiconair/properties v1.8.7 // indirect

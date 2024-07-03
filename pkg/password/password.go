@@ -1,6 +1,8 @@
 package password
 
-import "golang.org/x/crypto/bcrypt"
+import (
+	"golang.org/x/crypto/bcrypt"
+)
 
 type PasswordHandler interface {
 	CheckPassword(password, hash string) bool
@@ -15,6 +17,6 @@ func (h *Handler) CheckPassword(password, hash string) bool {
 }
 
 func (h *Handler) HashPassword(password string) (string, error) {
-	bytes, err := bcrypt.GenerateFromPassword([]byte(password), 14)
+	bytes, err := bcrypt.GenerateFromPassword([]byte(password), 10)
 	return string(bytes), err
 }

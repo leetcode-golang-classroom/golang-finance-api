@@ -5,7 +5,7 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/jmoiron/sqlx"
-	"github.com/leetcode-golang-classroom/golang-finance-api/internal/util"
+	"github.com/leetcode-golang-classroom/golang-finance-api/internal/util/response"
 )
 
 type Handler struct {
@@ -24,7 +24,7 @@ func (h *Handler) HealthCheck(c *fiber.Ctx) error {
 	if err != nil {
 		return errors.New("database unavailable")
 	}
-	return util.Ok(c, fiber.Map{
+	return response.Ok(c, fiber.Map{
 		"database": "available",
 	})
 }

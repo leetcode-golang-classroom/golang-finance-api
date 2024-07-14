@@ -11,6 +11,7 @@ import (
 	"github.com/leetcode-golang-classroom/golang-finance-api/internal/config"
 	"github.com/leetcode-golang-classroom/golang-finance-api/internal/db"
 	"github.com/leetcode-golang-classroom/golang-finance-api/internal/util"
+	"github.com/leetcode-golang-classroom/golang-finance-api/internal/util/response"
 )
 
 type App struct {
@@ -25,7 +26,7 @@ func New(config *config.Config) *App {
 		util.FailOnError(err, "failed to connect")
 	}
 	fiberApp := fiber.New(fiber.Config{
-		ErrorHandler: util.DefaultErrorHandler,
+		ErrorHandler: response.DefaultErrorHandler,
 	})
 	app := &App{
 		fiberApp: fiberApp,

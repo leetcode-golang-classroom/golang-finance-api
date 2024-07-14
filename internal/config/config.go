@@ -22,7 +22,10 @@ func init() {
 	v.SetConfigName(".env")
 	v.SetConfigType("env")
 	v.AutomaticEnv()
-	util.FailOnError(v.BindEnv("PORT", "POSTGRES_URL", "DEFAULT_ADMIN_PASSWORD", "JWT_SIGN_SECRET"), "failed to bind PORT, POSTGRES_URL, DEFAULT_ADMIN_PASSWORD, JWT_SIGN_SECRET")
+	util.FailOnError(v.BindEnv("PORT"), "failed to bind PORT")
+	util.FailOnError(v.BindEnv("POSTGRES_URL"), "failed to bind POSTGRES_URL")
+	util.FailOnError(v.BindEnv("DEFAULT_ADMIN_PASSWORD"), "failed to bind DEFAULT_ADMIN_PASSWORD")
+	util.FailOnError(v.BindEnv("JWT_SIGN_SECRET"), "failed to bind JWT_SIGN_SECRET")
 	err := v.ReadInConfig()
 	if err != nil {
 		log.Println("Load from environment variable")

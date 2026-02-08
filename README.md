@@ -40,3 +40,6 @@ This is sample of how to structure my golang restful api server
 
 ![injection-direction-diagram](injection-direction-diagram.png)
 
+## update current schema
+
+https://dbdiagram.io/d/finance-system-6693da1a9939893daee177b8
